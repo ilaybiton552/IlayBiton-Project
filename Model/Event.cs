@@ -8,11 +8,6 @@ namespace Model
 {
     public class Event : BaseEntity
     {
-        public enum EnumEventType
-        {
-            Event=1,
-            Task
-        }
         protected string eventName;
         public string EventName
         {
@@ -26,8 +21,8 @@ namespace Model
             get { return creator; }
             set { creator = value; }
         }
-        protected EnumEventType eventType;
-        public EnumEventType EventType
+        protected EventType eventType;
+        public EventType EventType
         {
             get { return EventType; }
             set { eventType = value; }
