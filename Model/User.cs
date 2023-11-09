@@ -9,22 +9,67 @@ namespace Model
     public class User : BaseEntity
     {
         protected string firstName;
-        public string FirstName { get { return firstName; } set { firstName = value; } }
-        protected string lastName;
-        public string LastName { get { return lastName; } set { lastName = value; } }
-        protected string email;
-        public string Email { get { return email; } set { email = value; } }
-        protected string username;
-        public string Username { get { return username; } set { username = value; } }
-        protected string password;
-        public string Password { get { return password; } set { password = value; } }
-        protected string phoneNumber;
-        public string PhoneNumber { get {  return phoneNumber; } set {  phoneNumber = value; } }
-        protected bool isAdmin;
-        public bool IsAdmin { get {  return isAdmin; } set { IsAdmin = value; } }
-        protected DateTime birthday;
-        public DateTime Birthday { get {  return birthday; } set {  birthday = value; } }
+        public string FirstName 
+        { 
+            get { return firstName; } 
+            set { firstName = value; } 
+        }
 
+        protected string lastName;
+        public string LastName 
+        { 
+            get { return lastName; } 
+            set { lastName = value; } 
+        }
+
+        protected string email;
+        public string Email 
+        { 
+            get { return email; } 
+            set { email = value; } 
+        }
+
+        protected string username;
+        public string Username 
+        { 
+            get { return username; } 
+            set { username = value; } 
+        }
+
+        protected string password;
+        public string Password 
+        { 
+            get { return password; } 
+            set { password = value; } 
+        }
+
+        protected string phoneNumber;
+        public string PhoneNumber 
+        { 
+            get {  return phoneNumber; } 
+            set {  phoneNumber = value; } 
+        }
+
+        protected bool isAdmin;
+        public bool IsAdmin 
+        { 
+            get {  return isAdmin; } 
+            set { IsAdmin = value; } 
+        }
+
+        protected DateTime birthday;
+        public DateTime Birthday 
+        { 
+            get {  return birthday; } 
+            set {  birthday = value; } 
+        }
+
+        protected List<Calendar> calendars;
+        public List<Calendar> Calendars 
+        { 
+            get { return calendars; }
+            set {  calendars = value; }
+        }
     }
 
     public class UserList : List<User>
