@@ -15,8 +15,8 @@ namespace Model
             set { calendarName = value; } 
         }
 
-        protected int creator;
-        public int Creator
+        protected User creator;
+        public User Creator
         {
             get { return creator; }
             set { creator = value; }
@@ -37,11 +37,11 @@ namespace Model
         }
     }
 
-    public class UserCalendar : List<Calendar>
+    public class CalendarList : List<Calendar>
     {
-        public UserCalendar() { }
-        public UserCalendar(IEnumerable<Calendar> list) : base(list) { }
-        public UserCalendar(IEnumerable<BaseEntity> list) : base(list.Cast<Calendar>().ToList()) { }
+        public CalendarList() { }
+        public CalendarList(IEnumerable<Calendar> list) : base(list) { }
+        public CalendarList(IEnumerable<BaseEntity> list) : base(list.Cast<Calendar>().ToList()) { }
     }
 
 }

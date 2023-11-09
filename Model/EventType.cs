@@ -16,11 +16,11 @@ namespace Model
         }
     }
 
-    public class UserEventType : List<EventType>
+    public class EventTypeList : List<EventType>
     {
-        public UserEventType() { }
-        public UserEventType(IEnumerable<EventType> list) : base(list) { }
-        public UserEventType(IEnumerable<BaseEntity> list) : base(list.Cast<EventType>().ToList()) { }
+        public EventTypeList() { }
+        public EventTypeList(IEnumerable<EventType> list) : base(list) { }
+        public EventTypeList(IEnumerable<BaseEntity> list) : base(list.Cast<EventType>().ToList()) { }
     }
 
 }

@@ -22,16 +22,16 @@ namespace ViewModel
             return eventType;
         }
 
-        public UserList SelectAll()
+        public EventTypeList SelectAll()
         {
             command.CommandText = "SELECT * FROM tableEventType";
-            return new UserList(ExecuteCommand());
+            return new EventTypeList(ExecuteCommand());
         }
 
-        public User SelectById(int id)
+        public EventType SelectById(int id)
         {
             command.CommandText = "SELECT * FROM tableEventType WHERE id=" + id.ToString();
-            UserList list = new UserList(ExecuteCommand());
+            EventTypeList list = new EventTypeList(ExecuteCommand());
             if (list.Count == 0) return null;
             return list[0];
         }
