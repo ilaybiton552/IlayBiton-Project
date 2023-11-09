@@ -8,7 +8,7 @@ namespace Model
 {
     public class Event : BaseEntity
     {
-        enum EnumEventType
+        public enum EnumEventType
         {
             Event=1,
             Task
@@ -26,12 +26,12 @@ namespace Model
             get { return creator; }
             set { creator = value; }
         }
-        //protected EnumEventType eventType;
-        //public EnumEventType EventType
-        //{
-        //    get { return EventType; }
-        //    set { eventType = value; }
-        //}
+        protected EnumEventType eventType;
+        public EnumEventType EventType
+        {
+            get { return EventType; }
+            set { eventType = value; }
+        }
         protected DateTime startDate;
         public DateTime StartDate
         {
@@ -63,4 +63,12 @@ namespace Model
             set { displayColor = value; }
         }
     }
+
+    public class UserEvent : List<Event>
+    {
+        public UserEvent() { }
+        public UserEvent(IEnumerable<Event> list) : base(list) { }
+        public UserEvent(IEnumerable<BaseEntity> list) : base(list.Cast<Event>().ToList()) { }
+    }
+
 }
