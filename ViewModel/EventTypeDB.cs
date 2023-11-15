@@ -53,14 +53,14 @@ namespace ViewModel
 
         public int Update(EventType eventType)
         {
-            command.CommandText = "UPDATE tableEventType SET type = @type WHERE id = @ID";
+            command.CommandText = "UPDATE tableEventType SET type = @type WHERE id = @id";
             LoadParameters(eventType);
             return ExecuteCRUD();
         }
 
         public int Delete(EventType eventType)
         {
-            command.CommandText = "DELETE FROM tableEventType WHERE id = @ID";
+            command.CommandText = "DELETE FROM tableEventType WHERE id = @id";
             LoadParameters(eventType);
             return ExecuteCRUD();
         }

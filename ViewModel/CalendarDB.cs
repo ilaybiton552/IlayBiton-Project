@@ -22,6 +22,10 @@ namespace ViewModel
 
             UserDB userDB = new UserDB();
             calendar.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
+            calendar.Users = userDB.SelectByCalendarId(calendar.ID);
+
+            EventDB eventDB = new EventDB();
+            calendar.Events = eventDB.SelectByCalendarId(calendar.ID);
 
             return calendar;
         }
@@ -39,5 +43,43 @@ namespace ViewModel
             if (list.Count == 0) return null;
             return list[0];
         }
+
+        public CalendarList SelectByUserId(int id)
+        {
+            command.CommandText = $"SELECT * FROM (tableCalendar INNER JOIN tableUserCalendars ON tableCalendar.id = tableUserCalendars.calendarId) WHERE userID = {id}";
+            return new CalendarList(ExecuteCommand());
+        }
+
+        protected override void LoadParameters(BaseEntity entity)
+        {
+            Calendar calendar = entity as Calendar;
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@id", calendar.ID);
+            command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
+            command.Parameters.AddWithValue("@creator", calendar.Creator);
+        }
+
+
+        public int Insert(User user)
+        {
+            command.CommandText = "INSERT INTO tableCalendar (calendarName, creator) VALUES (@calendarName, @creator)";
+            LoadParameters(user);
+            return ExecuteCRUD();
+        }
+
+        public int Update(User user)
+        {
+            command.CommandText = "UPDATE tableCalendar SET calendarName = @calendarName, creator = @creator WHERE id = @id";
+            LoadParameters(user);
+            return ExecuteCRUD();
+        }
+
+        public int Delete(User user)
+        {
+            command.CommandText = "DELETE FROM tableCalendar WHERE id = @id";
+            LoadParameters(user);
+            return ExecuteCRUD();
+        }
+
     }
 }
