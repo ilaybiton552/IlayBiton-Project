@@ -22,6 +22,7 @@ namespace ViewModel
 
             UserDB userDB = new UserDB();
             _event.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
+            _event.Users = userDB.SelectByEventId(_event.ID);
 
             EventTypeDB eventTypeDB = new EventTypeDB();
             _event.EventType = eventTypeDB.SelectById(int.Parse(reader["eventType"].ToString()));
@@ -57,6 +58,12 @@ namespace ViewModel
         public EventList SelectByCalendarId(int id)
         {
             command.CommandText = $"SELECT * FROM (tableEvents INNER JOIN tableCalendarEvents ON tableEvents.id = tableCalendarEvents.eventId) WHERE calendarId = {id}";
+            return new EventList(ExecuteCommand());
+        }
+
+        public EventList SelectByUserId(int id)
+        {
+            command.CommandText = $"SELECT * FROM (tableEvents INNER JOIN tableUserEvents ON tableEvents.id = tableUserEvents.eventId) WHERE userId = {id}";
             return new EventList(ExecuteCommand());
         }
 

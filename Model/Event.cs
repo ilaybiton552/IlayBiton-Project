@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Model.User;
 
 namespace Model
 {
@@ -69,6 +70,12 @@ namespace Model
         {
             get { return displayColor; }
             set { displayColor = value; }
+        }
+        protected UserList users;
+        public UserList Users
+        {
+            get { return users; }
+            set { users = value; }
         }
     }
 

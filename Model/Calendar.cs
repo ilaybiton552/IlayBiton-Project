@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Model.User;
 
 namespace Model
 {
@@ -22,15 +23,15 @@ namespace Model
             set { creator = value; }
         }
 
-        protected List<Event> events;
-        public List<Event> Events
+        protected EventList events;
+        public EventList Events
         {
             get { return events; }
             set { events = value; }
         }
 
-        protected List<User> users;
-        public List<User> Users
+        protected UserList users;
+        public UserList Users
         {
             get { return users; }
             set { users = value; }

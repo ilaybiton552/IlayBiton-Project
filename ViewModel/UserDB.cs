@@ -31,6 +31,9 @@ namespace ViewModel
             CalendarDB calendarDB = new CalendarDB();
             user.Calendars = calendarDB.SelectByUserId(user.ID);
 
+            EventDB eventDB = new EventDB();
+            user.Events = eventDB.SelectByUserId(user.ID);
+
             return user;
         }
 
@@ -51,6 +54,12 @@ namespace ViewModel
         public UserList SelectByCalendarId(int id)
         {
             command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserCalendars ON tableUsers.id = tableUserCalendars.userId) WHERE calendarId = {id}";
+            return new UserList(ExecuteCommand());
+        }
+
+        public UserList SelectByEventId(int id)
+        {
+            command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserEvents ON tableUsers.id = tableUserEvents.userId) WHERE eventId = {id}";
             return new UserList(ExecuteCommand());
         }
 
@@ -88,6 +97,15 @@ namespace ViewModel
             command.CommandText = "DELETE FROM tableUsers WHERE id = @id";
             LoadParameters(user);
             return ExecuteCRUD();
+        }
+
+        public User Login(User user)
+        {
+            command.CommandText = $"SELECT * FROM tableUsers WHERE username = @username AND password = @password";
+            LoadParameters(user);
+            UserList list = new UserList(base.ExecuteCommand());
+            if (list.Count == 1) return list[0];
+            return null;
         }
 
     }
