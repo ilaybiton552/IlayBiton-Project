@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using static Model.User;
 
 namespace Model
 {
+    [DataContract]
     public class Event : BaseEntity
     {
         protected string eventName;
+        [DataMember]
         public string EventName
         {
             get { return eventName; }
@@ -17,6 +20,7 @@ namespace Model
         }
 
         protected User creator;
+        [DataMember]
         public User Creator
         {
             get { return creator; }
@@ -24,6 +28,7 @@ namespace Model
         }
 
         protected EventType eventType;
+        [DataMember]
         public EventType EventType
         {
             get { return EventType; }
@@ -31,6 +36,7 @@ namespace Model
         }
 
         protected bool isDone;
+        [DataMember]
         public bool IsDone
         {
             get { return isDone; }
@@ -38,6 +44,7 @@ namespace Model
         }
 
         protected DateTime startDate;
+        [DataMember]
         public DateTime StartDate
         {
             get { return startDate; }
@@ -45,6 +52,7 @@ namespace Model
         }
 
         protected DateTime dueDate;
+        [DataMember]
         public DateTime DueDate
         {
             get { return dueDate; }
@@ -52,6 +60,7 @@ namespace Model
         }
 
         protected DateTime startTime;
+        [DataMember]
         public DateTime StartTime
         {
             get { return startTime; }
@@ -59,6 +68,7 @@ namespace Model
         }
 
         protected DateTime endTime;
+        [DataMember]
         public DateTime EndTime
         {
             get { return endTime; }
@@ -66,12 +76,15 @@ namespace Model
         }
 
         protected string displayColor;
+        [DataMember]
         public string DisplayColor
         {
             get { return displayColor; }
             set { displayColor = value; }
         }
+
         protected UserList users;
+        [DataMember]
         public UserList Users
         {
             get { return users; }
@@ -79,6 +92,7 @@ namespace Model
         }
     }
 
+    [CollectionDataContract]
     public class EventList : List<Event>
     {
         public EventList() { }

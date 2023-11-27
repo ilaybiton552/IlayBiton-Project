@@ -60,24 +60,24 @@ namespace ViewModel
         }
 
 
-        public int Insert(User user)
+        public int Insert(Calendar calendar)
         {
             command.CommandText = "INSERT INTO tableCalendar (calendarName, creator) VALUES (@calendarName, @creator)";
-            LoadParameters(user);
+            LoadParameters(calendar);
             return ExecuteCRUD();
         }
 
-        public int Update(User user)
+        public int Update(Calendar calendar)
         {
             command.CommandText = "UPDATE tableCalendar SET calendarName = @calendarName, creator = @creator WHERE id = @id";
-            LoadParameters(user);
+            LoadParameters(calendar);
             return ExecuteCRUD();
         }
 
-        public int Delete(User user)
+        public int Delete(Calendar calendar)
         {
             command.CommandText = "DELETE FROM tableCalendar WHERE id = @id";
-            LoadParameters(user);
+            LoadParameters(calendar);
             return ExecuteCRUD();
         }
 

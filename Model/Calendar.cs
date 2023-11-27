@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using static Model.User;
 
 namespace Model
 {
+    [DataContract]
     public class Calendar : BaseEntity
     {
         protected string calendarName;
+        [DataMember]
         public string CalendarName 
         { 
             get { return calendarName; } 
@@ -17,6 +20,7 @@ namespace Model
         }
 
         protected User creator;
+        [DataMember]
         public User Creator
         {
             get { return creator; }
@@ -24,6 +28,7 @@ namespace Model
         }
 
         protected EventList events;
+        [DataMember]
         public EventList Events
         {
             get { return events; }
@@ -31,6 +36,7 @@ namespace Model
         }
 
         protected UserList users;
+        [DataMember]
         public UserList Users
         {
             get { return users; }
@@ -38,6 +44,7 @@ namespace Model
         }
     }
 
+    [CollectionDataContract]
     public class CalendarList : List<Calendar>
     {
         public CalendarList() { }
