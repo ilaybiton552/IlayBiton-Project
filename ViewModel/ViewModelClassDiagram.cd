@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ViewModel.BaseDB">
+    <Position X="6" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAApAAAABAAAAAgQAAAAAAAAAAAASEAA=</HashCode>
+      <FileName>BaseDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.CalendarDB">
+    <Position X="4.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAAAAAAAAAAAAAgEAAAAAAAAEAAACEAA=</HashCode>
+      <FileName>CalendarDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.EventDB">
+    <Position X="9.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAIAAAAAAAAAAAAgEAAAAAAAAEAAACEAA=</HashCode>
+      <FileName>EventDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.EventTypeDB">
+    <Position X="2.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAAAAAAAAAAAAAgEAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>EventTypeDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.UserDB">
+    <Position X="7.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAIAAAAAAAAAAAAgEAAAAAAgAQAAACEAA=</HashCode>
+      <FileName>UserDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
