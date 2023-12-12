@@ -24,6 +24,7 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
         public CloseWindowUserControl()
         {
             InitializeComponent();
+            tbClose.HorizontalAlignment = HorizontalAlignment.Center;
         }
 
         private void Close_MouseEnter(object sender, MouseEventArgs e)

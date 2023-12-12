@@ -146,13 +146,13 @@
                                    Margin="0,5"
                                    HorizontalAlignment="Right" />
                     </Grid>
-                    <Button x:Name="LoginBtn"
-                            Content="Login"
+                    <Button Content="Login"
                             Foreground="White"
                             Background="Black"
                             Margin="0,15"
                             Height="35"
-                            Width="250">
+                            Width="250"
+                            Click="Login_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Template">

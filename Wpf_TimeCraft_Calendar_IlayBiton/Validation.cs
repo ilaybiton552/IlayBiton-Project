@@ -10,16 +10,16 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
 {
     public class ValidName : ValidationRule
     {
-        public int min { get; set; }
-        public int max { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             try
             {
                 string name = value.ToString();
-                if (name.Length < min) // name too short
+                if (name.Length < Min) // name too short
                     return new ValidationResult(false, "Too short");
-                if (name.Length > max) // name too long
+                if (name.Length > Max) // name too long
                     return new ValidationResult(false, "Too long");
                 foreach (char c in name)
                     if (!Char.IsLetter(c) && c != ' ')
@@ -112,6 +112,22 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
             {
                 return new ValidationResult(false, "Error: " + ex.Message);
             }
+            return ValidationResult.ValidResult;
+        }
+    }
+
+    public class ValidEmail : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            return ValidationResult.ValidResult;
+        }
+    }
+
+    public class ValidPhoneNumber : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
             return ValidationResult.ValidResult;
         }
     }

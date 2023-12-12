@@ -68,5 +68,10 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
                 user.Password = ((PasswordBox)sender).Password;
             }
         }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
