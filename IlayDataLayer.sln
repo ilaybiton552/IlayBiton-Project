@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceModel", "ServiceMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfHost", "WpfHost\WpfHost.csproj", "{2C866464-4029-4396-83FC-17393291BE04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf_TimeCraft_Calendar_IlayBiton", "Wpf_TimeCraft_Calendar_IlayBiton\Wpf_TimeCraft_Calendar_IlayBiton.csproj", "{1C27CC9A-0FAC-4D16-9631-5E93600D2F44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2C866464-4029-4396-83FC-17393291BE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C866464-4029-4396-83FC-17393291BE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C866464-4029-4396-83FC-17393291BE04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C27CC9A-0FAC-4D16-9631-5E93600D2F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C27CC9A-0FAC-4D16-9631-5E93600D2F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C27CC9A-0FAC-4D16-9631-5E93600D2F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C27CC9A-0FAC-4D16-9631-5E93600D2F44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
