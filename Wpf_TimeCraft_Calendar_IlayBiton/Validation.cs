@@ -132,4 +132,12 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
         }
     }
 
+    public class ValidBirthday : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            return ValidationResult.ValidResult;
+        }
+    }
+
 }
