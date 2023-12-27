@@ -17,6 +17,8 @@ namespace ServiceModel
         [OperationContract] int InsertUser(User user);
         [OperationContract] int UpdateUser(User user);
         [OperationContract] int DeleteUser(User user);
+        [OperationContract] bool IsUsenameTaken(User user);
+        [OperationContract] bool IsEmailTaken(User user);
 
         // EventTypeDB
         [OperationContract] EventTypeList GetAllEventTypes();

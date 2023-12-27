@@ -82,6 +82,18 @@ namespace ServiceModel
             return userDB.Insert(user);
         }
 
+        public bool IsEmailTaken(User user)
+        {
+            UserDB userDB = new UserDB();
+            return userDB.IsEmailTaken(user);
+        }
+
+        public bool IsUsenameTaken(User user)
+        {
+            UserDB userDB = new UserDB();
+            return userDB.IsUsernameTaken(user);
+        }
+
         public User Login(User user)
         {
             UserDB userDB = new UserDB();

@@ -63,7 +63,7 @@ namespace Model
         public bool IsAdmin
         {
             get { return isAdmin; }
-            set { IsAdmin = value; }
+            set { isAdmin = value; }
         }
 
         protected DateTime birthday;
