@@ -949,7 +949,7 @@
                                 </DatePicker.Resources>
                             </DatePicker>
                             <ContentPresenter Margin="0, 5"
-                                              Content="{Binding ElementName=tbxPhone, Path=(Validation.Errors)[0]}" />
+                                              Content="{Binding ElementName=tbxBirthday, Path=(Validation.Errors)[0]}" />
                         </StackPanel>
                     </Grid>
                     <Button Content="Sign Up"

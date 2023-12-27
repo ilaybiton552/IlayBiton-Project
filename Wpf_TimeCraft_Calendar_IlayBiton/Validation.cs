@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Wpf_TimeCraft_Calendar_IlayBiton
@@ -120,6 +122,17 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            try
+            {
+                string email = value.ToString();
+                Regex reg = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,}$");
+                if (!reg.IsMatch(email))
+                    return new ValidationResult(false, "Email format: example@gmail.com");
+            }
+            catch (Exception ex)
+            {
+                return new ValidationResult(false, "Error: " + ex.Message);
+            }
             return ValidationResult.ValidResult;
         }
     }
@@ -128,6 +141,21 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            try
+            {
+                string phoneNumber = value.ToString();
+                Regex reg = new Regex(@"^\d+$");
+                if (!reg.IsMatch(phoneNumber))
+                    return new ValidationResult(false, "Only numbers allowed");
+                if (phoneNumber[0] != '0')
+                    return new ValidationResult(false, "Phone number must start with 0");
+                if (phoneNumber.Length != 10)
+                    return new ValidationResult(false, "Phone number must be have 10 numbers");
+            }
+            catch (Exception ex)
+            {
+                return new ValidationResult(false, "Error: " + ex.Message);
+            }
             return ValidationResult.ValidResult;
         }
     }
@@ -136,6 +164,15 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            try
+            {
+                string birthday = value.ToString();
+                MessageBox.Show(birthday);
+            }
+            catch (Exception ex)
+            {
+                return new ValidationResult(false, "Error: " + ex.Message);
+            }
             return ValidationResult.ValidResult;
         }
     }

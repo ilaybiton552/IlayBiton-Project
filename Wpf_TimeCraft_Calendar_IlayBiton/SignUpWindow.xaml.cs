@@ -22,9 +22,11 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
     public partial class SignUpWindow : Window
     {
         private User user;
+        private CalendarServiceReference.CalendarServiceClient serviceClient;
         public SignUpWindow()
         {
             InitializeComponent();
+            serviceClient = new CalendarServiceReference.CalendarServiceClient();
             user = new User();
             this.DataContext = user;
         }
@@ -70,7 +72,16 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
 
         private void Signup_Click(object sender, RoutedEventArgs e)
         {
-
+            ValidPassword validPassword = new ValidPassword();
+            ValidationResult validationResult = validPassword.Validate(pbPass.Password, CultureInfo.CurrentCulture);
+            if (!validationResult.IsValid || Validation.GetHasError(tbxEmail) | Validation.GetHasError(tbxPhone) ||
+                Validation.GetHasError(tbxFirstname) || Validation.GetHasError(tbxLastname) || 
+                Validation.GetHasError(tbxUsername))
+            {
+                MessageBox.Show("Fix your errors!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            serviceClient.InsertUser(user);
         }
     }
 }

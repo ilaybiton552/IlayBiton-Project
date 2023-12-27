@@ -23,9 +23,11 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
     public partial class LoginWindow : Window
     {
         private User user;
+        private CalendarServiceReference.CalendarServiceClient serviceClient;
         public LoginWindow()
         {
             InitializeComponent();
+            serviceClient = new CalendarServiceReference.CalendarServiceClient();
             user = new User();
             this.DataContext = user;
         }
@@ -71,7 +73,14 @@ namespace Wpf_TimeCraft_Calendar_IlayBiton
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-
+            ValidPassword validPassword = new ValidPassword();
+            ValidationResult validationResult = validPassword.Validate(pbPass.Password, CultureInfo.CurrentCulture);
+            if (!validationResult.IsValid || Validation.GetHasError(tbxUsername))
+            {
+                MessageBox.Show("Fix your errors!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            user = serviceClient.Login(user);
         }
     }
 }
