@@ -71,7 +71,6 @@ namespace ViewModel
         {
             Event _event = entity as Event;
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@id", _event.ID);
             command.Parameters.AddWithValue("@eventName", _event.EventName);
             command.Parameters.AddWithValue("@creator", _event.Creator.ID);
             command.Parameters.AddWithValue("@eventType", _event.EventType.ID);
@@ -84,6 +83,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@startTime", _event.StartTime);
             command.Parameters.AddWithValue("@endTime", _event.EndTime);
             command.Parameters.AddWithValue("@displayColor", _event.DisplayColor);
+            command.Parameters.AddWithValue("@id", _event.ID);
         }
 
         public int Insert(Event _event)

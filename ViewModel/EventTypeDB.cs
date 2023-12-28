@@ -40,8 +40,8 @@ namespace ViewModel
         {
             EventType eventType = entity as EventType;
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@id", eventType.ID);
             command.Parameters.AddWithValue("@type", eventType.Type);
+            command.Parameters.AddWithValue("@id", eventType.ID);
         }
 
         public int Insert(EventType eventType)
@@ -60,8 +60,7 @@ namespace ViewModel
 
         public int Delete(EventType eventType)
         {
-            command.CommandText = "DELETE FROM tableEventType WHERE id = @id";
-            LoadParameters(eventType);
+            command.CommandText = $"DELETE FROM tableEventType WHERE id = {eventType.ID}";
             return ExecuteCRUD();
         }
 
