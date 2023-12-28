@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -68,42 +69,39 @@ namespace ViewModel
         {
             User user = entity as User;
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@id", user.ID);
             command.Parameters.AddWithValue("@firstName", user.FirstName);
             command.Parameters.AddWithValue("@lastName", user.LastName);
             command.Parameters.AddWithValue("@username", user.Username);
             command.Parameters.AddWithValue("@password", user.Password);
             command.Parameters.AddWithValue("@email", user.Email);
-            command.Parameters.Add("@birthday", OleDbType.Date).Value = user.Birthday.ToString("MM/dd/yyyy");
             command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
             command.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber);
+            command.Parameters.AddWithValue("@id", user.ID);
         }
 
         public int Insert(User user)
         {
-            command.CommandText = "INSERT INTO tableUsers (firstName, lastName, username, [password], email, birthday, phoneNumber) VALUES (@firstName, @lastName, @username, @password, @email, @birthday, @phoneNumber)";
+            command.CommandText = $"INSERT INTO tableUsers (firstName, lastName, username, [password], email, isAdmin, birthday, phoneNumber) VALUES (@firstName, @lastName, @username, @password, @email, @isAdmin, '{user.Birthday.ToString("d")}', @phoneNumber)";
             LoadParameters(user);
             return ExecuteCRUD();
         }
 
         public int Update(User user)
         {
-            command.CommandText = "UPDATE tableUsers SET firstName = @firstName, lastName = @lastName, username = @username, [password] = @password, email = @email, birthday = @birthday, isAdmin = @isAdmin, phoneNumber = @phoneNumber WHERE id = @id";
+            command.CommandText = $"UPDATE tableUsers SET firstName = @firstName, lastName = @lastName, username = @username, [password] = @password, email = @email, birthday = '{user.Birthday.ToString("d")}', isAdmin = @isAdmin, phoneNumber = @phoneNumber WHERE id = @id";
             LoadParameters(user);
             return ExecuteCRUD();
         }
 
         public int Delete(User user)
         {
-            command.CommandText = "DELETE FROM tableUsers WHERE id = @id";
-            LoadParameters(user);
+            command.CommandText = $"DELETE FROM tableUsers WHERE id = {user.ID}";
             return ExecuteCRUD();
         }
 
         public User Login(User user)
         {
-            command.CommandText = "SELECT * FROM tableUsers WHERE username = @username AND [password] = @password";
-            LoadParameters(user);
+            command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}' AND [password] = '{user.Password}'";
             UserList list = new UserList(base.ExecuteCommand());
             if (list.Count == 1) return list[0];
             return null;
@@ -111,8 +109,7 @@ namespace ViewModel
 
         public bool IsUsernameTaken(User user)
         {
-            command.CommandText = "SELECT * FROM tableUsers WHERE username = @username";
-            LoadParameters(user);
+            command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}'";
             UserList list = new UserList(ExecuteCommand());
             if (list.Count == 0) return false;
             return true;
@@ -120,8 +117,7 @@ namespace ViewModel
 
         public bool IsEmailTaken(User user)
         {
-            command.CommandText = "SELECT * FROM tableUsers WHERE email = @email";
-            LoadParameters(user);
+            command.CommandText = $"SELECT * FROM tableUsers WHERE email = '{user.Email}'";
             UserList list = new UserList(ExecuteCommand());
             if (list.Count == 0) return false;
             return true;
