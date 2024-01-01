@@ -59,22 +59,6 @@ namespace Model
             set { dueDate = value; }
         }
 
-        protected DateTime startTime;
-        [DataMember]
-        public DateTime StartTime
-        {
-            get { return startTime; }
-            set { startTime = value; }
-        }
-
-        protected DateTime endTime;
-        [DataMember]
-        public DateTime EndTime
-        {
-            get { return endTime; }
-            set { endTime = value; }
-        }
-
         protected string displayColor;
         [DataMember]
         public string DisplayColor
