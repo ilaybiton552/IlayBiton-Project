@@ -54,9 +54,9 @@ namespace ViewModel
         {
             Calendar calendar = entity as Calendar;
             command.Parameters.Clear();
-            command.Parameters.AddWithValue("@id", calendar.ID);
             command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
             command.Parameters.AddWithValue("@creator", calendar.Creator);
+            command.Parameters.AddWithValue("@id", calendar.ID);
         }
 
 
@@ -76,8 +76,7 @@ namespace ViewModel
 
         public int Delete(Calendar calendar)
         {
-            command.CommandText = "DELETE FROM tableCalendar WHERE id = @id";
-            LoadParameters(calendar);
+            command.CommandText = $"DELETE FROM tableCalendar WHERE id = {calendar.ID}";
             return ExecuteCRUD();
         }
 
