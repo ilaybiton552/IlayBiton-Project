@@ -47,7 +47,7 @@ namespace ViewModel
 
         public CalendarList SelectByUserId(int id)
         {
-            command.CommandText = $"SELECT * FROM (tableCalendar INNER JOIN tableUserCalendars ON tableCalendar.id = tableUserCalendars.calendarId) WHERE userID = {id}";
+            command.CommandText = $"SELECT * FROM (tableCalendar INNER JOIN tableUserCalendars ON tableCalendar.id = tableUserCalendars.calendarId) WHERE userId = {id}";
             return new CalendarList(ExecuteCommand());
         }
 
