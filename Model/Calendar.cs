@@ -27,6 +27,14 @@ namespace Model
             set { creator = value; }
         }
 
+        protected string data;
+        [DataMember]
+        public string Data
+        {
+            get { return data; }
+            set { data = value; }
+        }
+
         protected EventList events;
         [DataMember]
         public EventList Events

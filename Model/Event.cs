@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -65,6 +67,14 @@ namespace Model
         {
             get { return displayColor; }
             set { displayColor = value; }
+        }
+
+        protected string data;
+        [DataMember]
+        public string Data
+        {
+            get { return data; }
+            set {  data = value; }
         }
 
         protected UserList users;

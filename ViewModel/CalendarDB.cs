@@ -19,6 +19,7 @@ namespace ViewModel
             Calendar calendar = entity as Calendar;
             calendar.ID = int.Parse(reader["id"].ToString());
             calendar.CalendarName = reader["calendarName"].ToString();
+            calendar.Data = reader["data"].ToString();
 
             UserDB userDB = new UserDB();
             calendar.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
