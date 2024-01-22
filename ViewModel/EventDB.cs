@@ -20,10 +20,6 @@ namespace ViewModel
             _event.ID = int.Parse(reader["id"].ToString());
             _event.EventName = reader["eventName"].ToString();
 
-            UserDB userDB = new UserDB();
-            _event.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
-            _event.Users = userDB.SelectByEventId(_event.ID);
-
             EventTypeDB eventTypeDB = new EventTypeDB();
             _event.EventType = eventTypeDB.SelectById(int.Parse(reader["eventType"].ToString()));
 

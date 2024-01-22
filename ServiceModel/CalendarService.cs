@@ -58,6 +58,42 @@ namespace ServiceModel
             return userDB.SelectAll();
         }
 
+        public EventList GetCalendarEvents(Calendar calendar)
+        {
+            EventDB eventDB = new EventDB();
+            return eventDB.SelectByCalendarId(calendar.ID);
+        }
+
+        public User GetUser(User user)
+        {
+            UserDB userDB = new UserDB();
+            return userDB.SelectById(user.ID);
+        }
+
+        public CalendarList GetUserCalendars(User user)
+        {
+            CalendarDB calendarDB = new CalendarDB();
+            return calendarDB.SelectByUserId(user.ID);
+        }
+
+        public EventList GetUserEvents(User user)
+        {
+            EventDB eventDB = new EventDB();
+            return eventDB.SelectByUserId(user.ID);
+        }
+
+        public UserList GetUsers(Calendar calendar)
+        {
+            UserDB userDB = new UserDB();
+            return userDB.SelectByCalendarId(calendar.ID);
+        }
+
+        public UserList GetUsers(Event _event)
+        {
+            UserDB userDB = new UserDB();
+            return userDB.SelectByEventId(_event.ID);
+        }
+
         public int InsertCalendar(Calendar calendar)
         {
             CalendarDB calendarDB = new CalendarDB();

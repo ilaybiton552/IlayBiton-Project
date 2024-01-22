@@ -30,12 +30,6 @@ namespace ViewModel
             user.IsAdmin = bool.Parse(reader["isAdmin"].ToString());
             user.Birthday = DateTime.Parse(reader["birthday"].ToString());
 
-            CalendarDB calendarDB = new CalendarDB();
-            user.Calendars = calendarDB.SelectByUserId(user.ID);
-
-            EventDB eventDB = new EventDB();
-            user.Events = eventDB.SelectByUserId(user.ID);
-
             return user;
         }
 

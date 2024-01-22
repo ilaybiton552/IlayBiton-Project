@@ -19,6 +19,9 @@ namespace ServiceModel
         [OperationContract] int DeleteUser(User user);
         [OperationContract] bool IsUsenameTaken(User user);
         [OperationContract] bool IsEmailTaken(User user);
+        [OperationContract] User GetUser(User user);
+        [OperationContract] UserList GetUsers(Calendar calendar);
+        [OperationContract] UserList GetUsers(Event _event);
 
         // EventTypeDB
         [OperationContract] EventTypeList GetAllEventTypes();
@@ -31,12 +34,15 @@ namespace ServiceModel
         [OperationContract] int InsertEvent(Event _event);
         [OperationContract] int UpdateEvent(Event _event);
         [OperationContract] int DeleteEvent(Event _event);
+        [OperationContract] EventList GetUserEvents(User user);
+        [OperationContract] EventList GetCalendarEvents(Calendar calendar);
 
         // CalendarDB
         [OperationContract] CalendarList GetAllCalendars();
         [OperationContract] int InsertCalendar(Calendar calendar);
         [OperationContract] int UpdateCalendar(Calendar calendar);
         [OperationContract] int DeleteCalendar(Calendar calendar);
+        [OperationContract] CalendarList GetUserCalendars(User user);
 
     }
 }
