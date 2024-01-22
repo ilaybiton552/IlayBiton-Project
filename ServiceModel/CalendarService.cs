@@ -82,13 +82,13 @@ namespace ServiceModel
             return eventDB.SelectByUserId(user.ID);
         }
 
-        public UserList GetUsers(Calendar calendar)
+        public UserList GetUsersByCalendar(Calendar calendar)
         {
             UserDB userDB = new UserDB();
             return userDB.SelectByCalendarId(calendar.ID);
         }
 
-        public UserList GetUsers(Event _event)
+        public UserList GetUsersByEvent(Event _event)
         {
             UserDB userDB = new UserDB();
             return userDB.SelectByEventId(_event.ID);
