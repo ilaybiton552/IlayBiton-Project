@@ -39,7 +39,7 @@ namespace ServiceModel
 
         // CalendarDB
         [OperationContract] CalendarList GetAllCalendars();
-        [OperationContract] int InsertCalendar(Calendar calendar);
+        [OperationContract] int InsertCalendar(Calendar calendar, UserList users);
         [OperationContract] int UpdateCalendar(Calendar calendar);
         [OperationContract] int DeleteCalendar(Calendar calendar);
         [OperationContract] CalendarList GetUserCalendars(User user);

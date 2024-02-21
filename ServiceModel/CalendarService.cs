@@ -94,10 +94,16 @@ namespace ServiceModel
             return userDB.SelectByEventId(_event.ID);
         }
 
-        public int InsertCalendar(Calendar calendar)
+        public int InsertCalendar(Calendar calendar, UserList users)
         {
+            int affectedRows = 0;
             CalendarDB calendarDB = new CalendarDB();
-            return calendarDB.Insert(calendar);
+            affectedRows += calendarDB.Insert(calendar);
+            foreach (User user in users)
+            {
+                affectedRows += calendarDB.InsertUserToCalendar(calendar, user);
+            }
+            return affectedRows;
         }
 
         public int InsertEvent(Event _event)

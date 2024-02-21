@@ -51,14 +51,21 @@ namespace ViewModel
             command.Parameters.Clear();
             command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
             command.Parameters.AddWithValue("@creator", calendar.Creator);
+            command.Parameters.AddWithValue("@data", calendar.Data);
             command.Parameters.AddWithValue("@id", calendar.ID);
         }
 
 
         public int Insert(Calendar calendar)
         {
-            command.CommandText = "INSERT INTO tableCalendar (calendarName, creator) VALUES (@calendarName, @creator)";
+            command.CommandText = "INSERT INTO tableCalendar (calendarName, creator, data) VALUES (@calendarName, @creator, @data)";
             LoadParameters(calendar);
+            return ExecuteCRUD();
+        }
+
+        public int InsertUserToCalendar(Calendar calendar, User user) 
+        {
+            command.CommandText = $"INSERT INTO tableUserCalendars (userId, calendarId) VALUES ({user.ID}, {calendar.ID})";
             return ExecuteCRUD();
         }
 
