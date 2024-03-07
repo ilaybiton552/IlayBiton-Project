@@ -94,12 +94,15 @@ namespace ServiceModel
             return userDB.SelectByEventId(_event.ID);
         }
 
-        public int InsertCalendar(Calendar calendar, UserList users)
+        public int InsertCalendar(Calendar calendar)
         {
             int affectedRows = 0;
             CalendarDB calendarDB = new CalendarDB();
+            UserList calUsers = calendar.Users;
             affectedRows += calendarDB.Insert(calendar);
-            foreach (User user in users)
+            // last calendar is the now added calendar
+            calendar = calendarDB.SelectAll().Last();
+            foreach (User user in calUsers)
             {
                 affectedRows += calendarDB.InsertUserToCalendar(calendar, user);
             }

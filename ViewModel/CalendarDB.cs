@@ -50,7 +50,7 @@ namespace ViewModel
             Calendar calendar = entity as Calendar;
             command.Parameters.Clear();
             command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
-            command.Parameters.AddWithValue("@creator", calendar.Creator);
+            command.Parameters.AddWithValue("@creator", calendar.Creator.ID);
             command.Parameters.AddWithValue("@data", calendar.Data);
             command.Parameters.AddWithValue("@id", calendar.ID);
         }
@@ -71,7 +71,7 @@ namespace ViewModel
 
         public int Update(Calendar calendar)
         {
-            command.CommandText = "UPDATE tableCalendar SET calendarName = @calendarName, creator = @creator WHERE id = @id";
+            command.CommandText = "UPDATE tableCalendar SET calendarName = @calendarName, creator = @creator, data = @data WHERE id = @id";
             LoadParameters(calendar);
             return ExecuteCRUD();
         }
