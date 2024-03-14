@@ -20,8 +20,8 @@ namespace ServiceModel
         [OperationContract] bool IsUsenameTaken(User user);
         [OperationContract] bool IsEmailTaken(User user);
         [OperationContract] User GetUser(User user);
-        [OperationContract] UserList GetUsersByCalendar(Calendar calendar);
-        [OperationContract] UserList GetUsersByEvent(Event _event);
+        [OperationContract] UserList GetCalendarUsers(Calendar calendar);
+        [OperationContract] UserList GetEventUsers(Event _event);
 
         // EventTypeDB
         [OperationContract] EventTypeList GetAllEventTypes();
