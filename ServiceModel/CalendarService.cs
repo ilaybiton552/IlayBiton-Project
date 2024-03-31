@@ -124,7 +124,11 @@ namespace ServiceModel
         public int InsertUser(User user)
         {
             UserDB userDB = new UserDB();
-            return userDB.Insert(user);
+            if (userDB.Insert(user) != 1) // error creating user
+            {
+                return -1;
+            }
+            return GetAllUsers().Last().ID;
         }
 
         public bool IsEmailTaken(User user)
