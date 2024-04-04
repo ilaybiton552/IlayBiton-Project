@@ -86,6 +86,7 @@ namespace Model
         }
 
         protected Calendar calendar;
+        [DataMember]
         public Calendar Calendar
         {
             get { return calendar; }
