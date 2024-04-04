@@ -29,6 +29,8 @@ namespace ViewModel
             user.PhoneNumber = reader["phoneNumber"].ToString();
             user.IsAdmin = bool.Parse(reader["isAdmin"].ToString());
             user.Birthday = DateTime.Parse(reader["birthday"].ToString());
+            user.Calendars = new CalendarList();
+            user.Events = new EventList();
 
             return user;
         }

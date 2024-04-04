@@ -21,6 +21,8 @@ namespace ViewModel
             calendar.ID = int.Parse(reader["id"].ToString());
             calendar.CalendarName = reader["calendarName"].ToString();
             calendar.Data = reader["data"].ToString();
+            calendar.Users = new UserList();
+            calendar.Events = new EventList();
 
             return calendar;
         }
