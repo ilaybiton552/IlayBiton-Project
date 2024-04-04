@@ -60,13 +60,13 @@ namespace ViewModel
 
         public EventList SelectByCalendarId(int id)
         {
-            command.CommandText = $"SELECT * FROM (tableEvents INNER JOIN tableCalendarEvents ON tableEvents.id = tableCalendarEvents.eventId) WHERE calendarId = {id}";
+            command.CommandText = $"SELECT * FROM tableEvents WHERE calendar = {id}";
             return new EventList(ExecuteCommand());
         }
 
         public EventList SelectByUserId(int id)
         {
-            command.CommandText = $"SELECT * FROM (tableEvents INNER JOIN tableUserEvents ON tableEvents.id = tableUserEvents.eventId) WHERE userId = {id}";
+            command.CommandText = $"SELECT * FROM ((tableEvents INNER JOIN tableCalendars ON tableEvents.calendar = tableCalendars.id) INNER JOIN tableUserCalendars ON tableCalendars.id = tableUserCalendars.calendarId) WHERE userId = {id}";
             return new EventList(ExecuteCommand());
         }
 
