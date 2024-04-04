@@ -84,6 +84,13 @@ namespace Model
             get { return users; }
             set { users = value; }
         }
+
+        protected Calendar calendar;
+        public Calendar Calendar
+        {
+            get { return calendar; }
+            set { calendar = value; }
+        }
     }
 
     [CollectionDataContract]

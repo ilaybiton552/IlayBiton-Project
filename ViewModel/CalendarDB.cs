@@ -21,6 +21,10 @@ namespace ViewModel
             calendar.ID = int.Parse(reader["id"].ToString());
             calendar.CalendarName = reader["calendarName"].ToString();
             calendar.Data = reader["data"].ToString();
+
+            UserDB userDB = new UserDB();
+            calendar.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
+
             calendar.Users = new UserList();
             calendar.Events = new EventList();
 
@@ -29,13 +33,13 @@ namespace ViewModel
 
         public CalendarList SelectAll()
         {
-            command.CommandText = "SELECT * FROM tableCalendar";
+            command.CommandText = "SELECT * FROM tableCalendars";
             return new CalendarList(ExecuteCommand());
         }
 
         public Calendar SelectById(int id)
         {
-            command.CommandText = "SELECT * FROM tableCalendar WHERE id=" + id.ToString();
+            command.CommandText = "SELECT * FROM tableCalendars WHERE id=" + id.ToString();
             CalendarList list = new CalendarList(ExecuteCommand());
             if (list.Count == 0) return null;
             return list[0];
@@ -43,7 +47,7 @@ namespace ViewModel
 
         public CalendarList SelectByUserId(int id)
         {
-            command.CommandText = $"SELECT * FROM (tableCalendar INNER JOIN tableUserCalendars ON tableCalendar.id = tableUserCalendars.calendarId) WHERE userId = {id}";
+            command.CommandText = $"SELECT * FROM (tableCalendars INNER JOIN tableUserCalendars ON tableCalendars.id = tableUserCalendars.calendarId) WHERE userId = {id}";
             return new CalendarList(ExecuteCommand());
         }
 
@@ -60,7 +64,7 @@ namespace ViewModel
 
         public int Insert(Calendar calendar)
         {
-            command.CommandText = "INSERT INTO tableCalendar (calendarName, creator, data) VALUES (@calendarName, @creator, @data)";
+            command.CommandText = "INSERT INTO tableCalendars (calendarName, creator, data) VALUES (@calendarName, @creator, @data)";
             LoadParameters(calendar);
             return ExecuteCRUD();
         }
@@ -73,14 +77,14 @@ namespace ViewModel
 
         public int Update(Calendar calendar)
         {
-            command.CommandText = "UPDATE tableCalendar SET calendarName = @calendarName, creator = @creator, data = @data WHERE id = @id";
+            command.CommandText = "UPDATE tableCalendars SET calendarName = @calendarName, creator = @creator, data = @data WHERE id = @id";
             LoadParameters(calendar);
             return ExecuteCRUD();
         }
 
         public int Delete(Calendar calendar)
         {
-            command.CommandText = $"DELETE FROM tableCalendar WHERE id = {calendar.ID}";
+            command.CommandText = $"DELETE FROM tableCalendars WHERE id = {calendar.ID}";
             return ExecuteCRUD();
         }
 

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,13 @@ namespace ViewModel
             {
                 _event.IsDone = bool.Parse(reader["isDone"].ToString());
             }
-            
+
+            UserDB userDB = new UserDB();
+            _event.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));
+
+            CalendarDB calendarDB = new CalendarDB();
+            _event.Calendar = calendarDB.SelectById(int.Parse(reader["calendar"].ToString()));
+
             _event.StartDate = DateTime.Parse(reader["startDate"].ToString());
             _event.DueDate = DateTime.Parse(reader["dueDate"].ToString());
             _event.DisplayColor = reader["displayColor"].ToString();
