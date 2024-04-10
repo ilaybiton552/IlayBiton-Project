@@ -1,4 +1,4 @@
-﻿using Model;
+﻿    using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,7 +57,7 @@ namespace ViewModel
 
         public UserList SelectByEventId(int id)
         {
-            command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserEvents ON tableUsers.id = tableUserEvents.userId) WHERE eventId = {id}";
+            command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserCalendars ON tableUsers.id = tableUserCalendars.userId) WHERE eventId = {id}";
             return new UserList(ExecuteCommand());
         }
 
