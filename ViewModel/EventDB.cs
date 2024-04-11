@@ -80,7 +80,6 @@ namespace ViewModel
             {
                 command.Parameters.AddWithValue("@isDone", _event.IsDone);
             }
-            command.Parameters.AddWithValue("@baseColor", _event.BaseColor);
             command.Parameters.AddWithValue("@calendar", _event.Calendar.ID);
             command.Parameters.AddWithValue("@id", _event.ID);
         }
@@ -89,11 +88,11 @@ namespace ViewModel
         {
             if (_event.EventType.Type == "Task")
             {
-                command.CommandText = $"INSERT INTO tableEvents (eventName, creator, eventType, isDone, startDate, dueDate, baseColor, calendar) VALUES (@eventName, @creator, @eventType, @isDone, {_event.StartDate}, {_event.DueDate}, @baseColor, @calendar)";
+                command.CommandText = $"INSERT INTO tableEvents (eventName, creator, eventType, isDone, startDate, dueDate, calendar) VALUES (@eventName, @creator, @eventType, @isDone, {_event.StartDate}, {_event.DueDate}, @baseColor, @calendar)";
             }
             else
             {
-                command.CommandText = $"INSERT INTO tableEvents (eventName, creator, eventType, startDate, dueDate, baseColor, calendar) VALUES (@eventName, @creator, @eventType, {_event.StartDate}, {_event.DueDate}, @baseColor, @calendar)";
+                command.CommandText = $"INSERT INTO tableEvents (eventName, creator, eventType, startDate, dueDate, calendar) VALUES (@eventName, @creator, @eventType, {_event.StartDate}, {_event.DueDate}, @baseColor, @calendar)";
             }
             LoadParameters(_event);
             return ExecuteCRUD();
@@ -103,11 +102,11 @@ namespace ViewModel
         {
             if (_event.EventType.Type == "Task")
             {
-                command.CommandText = $"UPDATE tableEvents SET eventName = @eventName, creator = @creator, eventType = @eventType, isDone = @isDone, startDate = {_event.StartDate}, dueDate = {_event.DueDate}, baseColor = @baseColor, calndar = @calendar WHERE id = @id";
+                command.CommandText = $"UPDATE tableEvents SET eventName = @eventName, creator = @creator, eventType = @eventType, isDone = @isDone, startDate = {_event.StartDate}, dueDate = {_event.DueDate}, calndar = @calendar WHERE id = @id";
             }
             else
             {
-                command.CommandText = $"UPDATE tableEvents SET eventName = @eventName, creator = @creator, eventType = @eventType, isDone = @isDone, startDate = {_event.StartDate}, dueDate = {_event.DueDate}, baseColor = @baseColor, calendar = @calendar WHERE id = @id";
+                command.CommandText = $"UPDATE tableEvents SET eventName = @eventName, creator = @creator, eventType = @eventType, isDone = @isDone, startDate = {_event.StartDate}, dueDate = {_event.DueDate}, calendar = @calendar WHERE id = @id";
             }
             LoadParameters(_event);
             return ExecuteCRUD();

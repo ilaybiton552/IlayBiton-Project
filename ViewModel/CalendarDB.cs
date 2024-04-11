@@ -62,13 +62,14 @@ namespace ViewModel
             command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
             command.Parameters.AddWithValue("@creator", calendar.Creator.ID);
             command.Parameters.AddWithValue("@data", calendar.Data);
+            command.Parameters.AddWithValue("@baseColor", calendar.BaseColor);
             command.Parameters.AddWithValue("@id", calendar.ID);
         }
 
 
         public int Insert(Calendar calendar)
         {
-            command.CommandText = "INSERT INTO tableCalendars (calendarName, creator, data) VALUES (@calendarName, @creator, @data)";
+            command.CommandText = "INSERT INTO tableCalendars (calendarName, creator, data, baseColor) VALUES (@calendarName, @creator, @data, @baseColor)";
             LoadParameters(calendar);
             return ExecuteCRUD();
         }
@@ -81,7 +82,7 @@ namespace ViewModel
 
         public int Update(Calendar calendar)
         {
-            command.CommandText = "UPDATE tableCalendars SET calendarName = @calendarName, creator = @creator, data = @data WHERE id = @id";
+            command.CommandText = "UPDATE tableCalendars SET calendarName = @calendarName, creator = @creator, data = @data, baseColor = @baseColor WHERE id = @id";
             LoadParameters(calendar);
             return ExecuteCRUD();
         }
