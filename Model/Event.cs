@@ -61,12 +61,12 @@ namespace Model
             set { dueDate = value; }
         }
 
-        protected string displayColor;
+        protected string baseColor;
         [DataMember]
-        public string DisplayColor
+        public string BaseColor
         {
-            get { return displayColor; }
-            set { displayColor = value; }
+            get { return baseColor; }
+            set { baseColor = value; }
         }
 
         protected string data;

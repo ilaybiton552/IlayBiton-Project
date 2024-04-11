@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using static Model.EventType;
 
 namespace ViewModel
 {
@@ -19,6 +21,21 @@ namespace ViewModel
             EventType eventType = entity as EventType;
             eventType.ID = int.Parse(reader["id"].ToString());
             eventType.Type = reader["type"].ToString();
+
+            BrushConverter brushConverter = new BrushConverter();
+            eventType.ColorShade = ((SolidColorBrush)brushConverter.ConvertFrom(reader["color"].ToString())).Color;
+
+            char act = reader["arithmeticAct"].ToString()[0];
+            switch (act)
+            {
+                case 'A':
+                    eventType.Act = ArithmeticAct.ADD; break;
+                case 'S':
+                    eventType.Act = ArithmeticAct.SUBTRACT; break;
+                case 'N':
+                    eventType.Act = ArithmeticAct.NONE; break;
+            }
+
             return eventType;
         }
 
