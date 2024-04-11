@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ViewModel
 {
@@ -21,6 +22,9 @@ namespace ViewModel
             calendar.ID = int.Parse(reader["id"].ToString());
             calendar.CalendarName = reader["calendarName"].ToString();
             calendar.Data = reader["data"].ToString();
+
+            BrushConverter brushConverter = new BrushConverter();
+            calendar.BaseColor = ((SolidColorBrush)brushConverter.ConvertFrom(reader["baseColor"].ToString())).Color;
 
             UserDB userDB = new UserDB();
             calendar.Creator = userDB.SelectById(int.Parse(reader["creator"].ToString()));

@@ -37,7 +37,6 @@ namespace ViewModel
 
             _event.StartDate = DateTime.Parse(reader["startDate"].ToString());
             _event.DueDate = DateTime.Parse(reader["dueDate"].ToString());
-            _event.BaseColor = reader["baseColor"].ToString();
             _event.Data = reader["data"].ToString();
             _event.Users = new UserList();
 

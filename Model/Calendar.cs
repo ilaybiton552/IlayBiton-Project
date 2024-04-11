@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using static Model.User;
 
 namespace Model
@@ -33,6 +34,14 @@ namespace Model
         {
             get { return data; }
             set { data = value; }
+        }
+
+        protected Color baseColor;
+        [DataMember]
+        public Color BaseColor
+        {
+            get { return baseColor; }
+            set { baseColor = value; }
         }
 
         protected EventList events;
