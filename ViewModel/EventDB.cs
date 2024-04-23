@@ -65,7 +65,7 @@ namespace ViewModel
 
         public EventList SelectByUserId(int id)
         {
-            command.CommandText = $"SELECT * FROM ((tableEvents INNER JOIN tableCalendars ON tableEvents.calendar = tableCalendars.id) INNER JOIN tableUserCalendars ON tableCalendars.id = tableUserCalendars.calendarId) WHERE userId = {id}";
+            command.CommandText = $"SELECT tableEvents.* FROM ((tableEvents INNER JOIN tableCalendars ON tableEvents.calendar = tableCalendars.id) INNER JOIN tableUserCalendars ON tableCalendars.id = tableUserCalendars.calendarId) WHERE userId = {id}";
             return new EventList(ExecuteCommand());
         }
 

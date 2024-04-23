@@ -23,7 +23,7 @@ namespace ViewModel
             eventType.Type = reader["type"].ToString();
 
             BrushConverter brushConverter = new BrushConverter();
-            eventType.ColorShade = ((SolidColorBrush)brushConverter.ConvertFrom(reader["color"].ToString())).Color;
+            eventType.ColorShade = ((SolidColorBrush)brushConverter.ConvertFrom(reader["colorShade"].ToString())).Color;
 
             char act = reader["arithmeticAct"].ToString()[0];
             switch (act)

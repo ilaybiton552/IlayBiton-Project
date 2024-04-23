@@ -33,7 +33,7 @@ namespace Model
         [DataMember]
         public EventType EventType
         {
-            get { return EventType; }
+            get { return eventType; }
             set { eventType = value; }
         }
 
