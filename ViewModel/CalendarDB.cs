@@ -93,5 +93,12 @@ namespace ViewModel
             return ExecuteCRUD();
         }
 
+        public bool IsNameTaken(Calendar calendar)
+        {
+            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{calendar.CalendarName}'";
+            CalendarList calendars = new CalendarList(ExecuteCommand());
+            return calendars.Count > 0;
+        }
+
     }
 }

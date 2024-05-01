@@ -131,6 +131,12 @@ namespace ServiceModel
             return GetAllUsers().Last().ID;
         }
 
+        public bool IsCalendarNameTaken(Calendar calendar)
+        {
+            CalendarDB calendarDB = new CalendarDB();
+            return calendarDB.IsNameTaken(calendar);
+        }
+
         public bool IsEmailTaken(User user)
         {
             UserDB userDB = new UserDB();

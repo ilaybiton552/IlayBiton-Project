@@ -43,6 +43,7 @@ namespace ServiceModel
         [OperationContract] int UpdateCalendar(Calendar calendar);
         [OperationContract] int DeleteCalendar(Calendar calendar);
         [OperationContract] CalendarList GetUserCalendars(User user);
+        [OperationContract] bool IsCalendarNameTaken(Calendar calendar);
 
     }
 }
