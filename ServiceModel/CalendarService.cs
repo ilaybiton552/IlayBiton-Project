@@ -101,7 +101,7 @@ namespace ServiceModel
             UserList calUsers = calendar.Users;
             affectedRows += calendarDB.Insert(calendar);
             // last calendar is the now added calendar
-            calendar = calendarDB.SelectAll().Last();
+            calendar = calendarDB.SelectByName(calendar.CalendarName);
             foreach (User user in calUsers)
             {
                 affectedRows += calendarDB.InsertUserToCalendar(calendar, user);
@@ -128,13 +128,7 @@ namespace ServiceModel
             {
                 return -1;
             }
-            return GetAllUsers().Last().ID;
-        }
-
-        public bool IsCalendarNameTaken(Calendar calendar)
-        {
-            CalendarDB calendarDB = new CalendarDB();
-            return calendarDB.IsNameTaken(calendar);
+            return Login(user).ID;
         }
 
         public bool IsEmailTaken(User user)
@@ -158,6 +152,23 @@ namespace ServiceModel
         public int UpdateCalendar(Calendar calendar)
         {
             CalendarDB calendarDB = new CalendarDB();
+            Calendar beforeUpdate = calendarDB.SelectById(calendar.ID);
+            foreach (User user in  beforeUpdate.Users) 
+            {
+                // removed user from calendar
+                if (calendar.Users.Where(usr=>usr.ID == user.ID).ToList().Count == 0)
+                {
+                    calendarDB.DeleteUser(calendar, user);
+                }
+            }
+            foreach (User user in calendar.Users)
+            {
+                // added user to calendar
+                if (beforeUpdate.Users.Where(usr=>usr.ID == user.ID).ToList().Count == 0)
+                {
+                    calendarDB.InsertUserToCalendar(calendar, user);
+                }
+            }
             return calendarDB.Update(calendar);
         }
 

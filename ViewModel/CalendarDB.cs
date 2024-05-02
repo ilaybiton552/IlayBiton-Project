@@ -49,6 +49,14 @@ namespace ViewModel
             return list[0];
         }
 
+        public Calendar SelectByName(string name)
+        {
+            command.CommandText = $"SELECT * FROM tableCalendars WHERE calednarName = '{name}'";
+            CalendarList list = new CalendarList(ExecuteCommand());
+            if (list.Count == 0) return null;
+            return list[0];
+        }
+
         public CalendarList SelectByUserId(int id)
         {
             command.CommandText = $"SELECT * FROM (tableCalendars INNER JOIN tableUserCalendars ON tableCalendars.id = tableUserCalendars.calendarId) WHERE userId = {id}";
@@ -62,7 +70,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@calendarName", calendar.CalendarName);
             command.Parameters.AddWithValue("@creator", calendar.Creator.ID);
             command.Parameters.AddWithValue("@data", calendar.Data);
-            command.Parameters.AddWithValue("@baseColor", calendar.BaseColor);
+            command.Parameters.AddWithValue("@baseColor", calendar.BaseColor.ToString());
             command.Parameters.AddWithValue("@id", calendar.ID);
         }
 
@@ -93,12 +101,10 @@ namespace ViewModel
             return ExecuteCRUD();
         }
 
-        public bool IsNameTaken(Calendar calendar)
+        public int DeleteUser(Calendar calendar, User user)
         {
-            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{calendar.CalendarName}'";
-            CalendarList calendars = new CalendarList(ExecuteCommand());
-            return calendars.Count > 0;
+            command.CommandText = $"DELETE FROM tableUserCalendars WHERE calendarId = {calendar.ID} AND userId = {user.ID}";
+            return ExecuteCRUD();
         }
-
     }
 }
