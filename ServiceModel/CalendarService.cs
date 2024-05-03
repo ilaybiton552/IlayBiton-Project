@@ -189,5 +189,11 @@ namespace ServiceModel
             UserDB userDB = new UserDB();
             return userDB.Update(user);
         }
+
+        public bool IsCalendarNameTaken(Calendar calendar)
+        {
+            CalendarDB calendarDB = new CalendarDB();
+            return calendarDB.IsNameTaken(calendar);
+        }
     }
 }

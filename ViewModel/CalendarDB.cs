@@ -106,5 +106,12 @@ namespace ViewModel
             command.CommandText = $"DELETE FROM tableUserCalendars WHERE calendarId = {calendar.ID} AND userId = {user.ID}";
             return ExecuteCRUD();
         }
+
+        public bool IsNameTaken(Calendar calendar) 
+        {
+            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{calendar.CalendarName}'";
+            CalendarList list = new CalendarList(ExecuteCommand());
+            return list.Count != 0;
+        }
     }
 }
