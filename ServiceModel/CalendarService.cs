@@ -152,8 +152,8 @@ namespace ServiceModel
         public int UpdateCalendar(Calendar calendar)
         {
             CalendarDB calendarDB = new CalendarDB();
-            Calendar beforeUpdate = calendarDB.SelectById(calendar.ID);
-            foreach (User user in  beforeUpdate.Users) 
+            UserList usersBeforeUpdate = GetCalendarUsers(calendarDB.SelectById(calendar.ID));
+            foreach (User user in usersBeforeUpdate) 
             {
                 // removed user from calendar
                 if (calendar.Users.Where(usr=>usr.ID == user.ID).ToList().Count == 0)
@@ -164,7 +164,7 @@ namespace ServiceModel
             foreach (User user in calendar.Users)
             {
                 // added user to calendar
-                if (beforeUpdate.Users.Where(usr=>usr.ID == user.ID).ToList().Count == 0)
+                if (usersBeforeUpdate.Where(usr=>usr.ID == user.ID).ToList().Count == 0)
                 {
                     calendarDB.InsertUserToCalendar(calendar, user);
                 }
