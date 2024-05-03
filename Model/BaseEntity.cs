@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class BaseEntity
     {
         private int id;

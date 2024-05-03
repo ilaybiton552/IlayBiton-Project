@@ -9,7 +9,7 @@ using static Model.User;
 
 namespace Model
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class Calendar : BaseEntity
     {
         protected string calendarName;

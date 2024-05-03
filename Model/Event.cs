@@ -10,7 +10,7 @@ using static Model.User;
 
 namespace Model
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class Event : BaseEntity
     {
         protected string eventName;

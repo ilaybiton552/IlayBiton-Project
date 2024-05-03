@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Model
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class EventType : BaseEntity
     {
         public enum ArithmeticAct { ADD, SUBTRACT, NONE }
