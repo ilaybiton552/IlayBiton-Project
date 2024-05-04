@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calendar = Model.Calendar;
 
 namespace ViewModel
 {
@@ -106,6 +107,24 @@ namespace ViewModel
         public int Delete(Event _event)
         {
             command.CommandText = $"DELETE FROM tableEvents WHERE id = {_event.ID}";
+            return ExecuteCRUD();
+        }
+
+        public int DeleteByEventType(EventType eventType)
+        {
+            command.CommandText = $"DELETE FROM tableEvents WHERE eventType = {eventType.ID}";
+            return ExecuteCRUD();
+        }
+
+        public int DeleteByCalendar(Calendar calendar)
+        {
+            command.CommandText = $"DELETE FROM tableEvents WHERE calendar = {calendar.ID}";
+            return ExecuteCRUD();
+        }
+
+        public int DeleteByUser(User user) 
+        {
+            command.CommandText = $"DELETE FROM tableEvents WHERE creator = {user.ID}";
             return ExecuteCRUD();
         }
 

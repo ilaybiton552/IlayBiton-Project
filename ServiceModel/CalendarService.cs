@@ -12,6 +12,8 @@ namespace ServiceModel
     {
         public int DeleteCalendar(Calendar calendar)
         {
+            EventDB eventDB = new EventDB();
+            eventDB.DeleteByCalendar(calendar);
             CalendarDB calendarDB = new CalendarDB();
             return calendarDB.Delete(calendar);
         }
@@ -24,12 +26,18 @@ namespace ServiceModel
 
         public int DeleteEventType(EventType eventType)
         {
+            EventDB eventDB = new EventDB();
+            eventDB.DeleteByEventType(eventType);
             EventTypeDB eventTypeDB = new EventTypeDB();
             return eventTypeDB.Delete(eventType);
         }
 
         public int DeleteUser(User user)
         {
+            EventDB eventDB = new EventDB();
+            eventDB.DeleteByUser(user);
+            CalendarDB calendarDB = new CalendarDB();
+            calendarDB.DeleteByUser(user);
             UserDB userDB = new UserDB();
             return userDB.Delete(user);
         }

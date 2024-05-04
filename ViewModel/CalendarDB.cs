@@ -97,7 +97,7 @@ namespace ViewModel
 
         public int Delete(Calendar calendar)
         {
-            command.CommandText = $"DELETE FROM tableCalendars WHERE id = {calendar.ID}";
+            command.CommandText = $"DELETE FROM tableCalendars WHERE id = {calendar.ID}; DELETE FROM tableUserCalendars WHERE calendarId = {calendar.ID}";
             return ExecuteCRUD();
         }
 
@@ -113,5 +113,12 @@ namespace ViewModel
             CalendarList list = new CalendarList(ExecuteCommand());
             return list.Count != 0;
         }
+
+        public int DeleteByUser(User user)
+        {
+            command.CommandText = $"DELETE FROM tableCalendars WHERE creator = {user.ID}";
+            return ExecuteCRUD();
+        }
+
     }
 }
