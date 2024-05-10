@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using Calendar = Model.Calendar;
 
 namespace ViewModel
@@ -36,12 +37,32 @@ namespace ViewModel
             CalendarDB calendarDB = new CalendarDB();
             _event.Calendar = calendarDB.SelectById(int.Parse(reader["calendar"].ToString()));
 
+            //fix problem here
+            _event.EventBackground = GetEventBackground(_event);
             _event.StartDate = DateTime.Parse(reader["startDate"].ToString());
             _event.DueDate = DateTime.Parse(reader["dueDate"].ToString());
             _event.Data = reader["data"].ToString();
             _event.Users = new UserList();
 
             return _event;
+        }
+
+        private Color GetEventBackground(Event _event)
+        {
+            Color first = _event.Calendar.BaseColor;
+            Color second = _event.EventType.ColorShade;
+            switch (_event.EventType.Act)
+            {
+                case EventType.ArithmeticAct.ADD:
+                    return Color.FromRgb((byte)Math.Min(255, first.R + second.R),
+                                                             (byte)Math.Min(255, first.G + second.G),
+                                                             (byte)Math.Min(255, first.B + second.B));
+                case EventType.ArithmeticAct.SUBTRACT:
+                    return Color.FromRgb((byte)Math.Max(0, first.R - second.R),
+                                                             (byte)Math.Max(0, first.G - second.G),
+                                                             (byte)Math.Max(0, first.B - second.B));
+            }
+            return first;
         }
 
         public EventList SelectAll()

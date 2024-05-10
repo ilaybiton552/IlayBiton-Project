@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using static Model.User;
 
 namespace Model
@@ -83,6 +84,14 @@ namespace Model
         {
             get { return calendar; }
             set { calendar = value; }
+        }
+
+        protected Color eventBackground;
+        [DataMember]
+        public Color EventBackground
+        {
+            get { return eventBackground; }
+            set { eventBackground = value; }
         }
     }
 

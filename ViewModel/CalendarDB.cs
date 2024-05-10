@@ -109,7 +109,7 @@ namespace ViewModel
 
         public bool IsNameTaken(Calendar calendar) 
         {
-            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{calendar.CalendarName}' AND id != {calendar.ID}";
+            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{calendar.CalendarName}' AND id <> {calendar.ID}";
             CalendarList list = new CalendarList(ExecuteCommand());
             return list.Count != 0;
         }
