@@ -55,12 +55,6 @@ namespace ViewModel
             return new UserList(ExecuteCommand());
         }
 
-        public UserList SelectByEventId(int id)
-        {
-            command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserCalendars ON tableUsers.id = tableUserCalendars.userId) WHERE eventId = {id}";
-            return new UserList(ExecuteCommand());
-        }
-
         protected override void LoadParameters(BaseEntity entity)
         {
             User user = entity as User;

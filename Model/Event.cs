@@ -70,14 +70,6 @@ namespace Model
             set {  data = value; }
         }
 
-        protected UserList users;
-        [DataMember]
-        public UserList Users
-        {
-            get { return users; }
-            set { users = value; }
-        }
-
         protected Calendar calendar;
         [DataMember]
         public Calendar Calendar

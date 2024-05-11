@@ -21,7 +21,6 @@ namespace ServiceModel
         [OperationContract] bool IsEmailTaken(User user);
         [OperationContract] User GetUser(User user);
         [OperationContract] UserList GetCalendarUsers(Calendar calendar);
-        [OperationContract] UserList GetEventUsers(Event _event);
 
         // EventTypeDB
         [OperationContract] EventTypeList GetAllEventTypes();

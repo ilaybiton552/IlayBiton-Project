@@ -97,8 +97,10 @@ namespace ViewModel
 
         public int Delete(Calendar calendar)
         {
-            command.CommandText = $"DELETE FROM tableUserCalendars WHERE calendarId = {calendar.ID}; DELETE FROM tableCalendars WHERE id = {calendar.ID}";
-            return ExecuteCRUD();
+            command.CommandText = $"DELETE FROM tableUserCalendars WHERE calendarId = {calendar.ID}";
+            int usersDelete = ExecuteCRUD();
+            command.CommandText = $"DELETE FROM tableCalendars WHERE id = {calendar.ID}";
+            return ExecuteCRUD() + usersDelete;
         }
 
         public int DeleteUser(Calendar calendar, User user)

@@ -96,12 +96,6 @@ namespace ServiceModel
             return userDB.SelectByCalendarId(calendar.ID);
         }
 
-        public UserList GetEventUsers(Event _event)
-        {
-            UserDB userDB = new UserDB();
-            return userDB.SelectByEventId(_event.ID);
-        }
-
         public int InsertCalendar(Calendar calendar)
         {
             int affectedRows = 0;

@@ -37,12 +37,10 @@ namespace ViewModel
             CalendarDB calendarDB = new CalendarDB();
             _event.Calendar = calendarDB.SelectById(int.Parse(reader["calendar"].ToString()));
 
-            //fix problem here
             _event.EventBackground = GetEventBackground(_event);
             _event.StartDate = DateTime.Parse(reader["startDate"].ToString());
             _event.DueDate = DateTime.Parse(reader["dueDate"].ToString());
             _event.Data = reader["data"].ToString();
-            _event.Users = new UserList();
 
             return _event;
         }
