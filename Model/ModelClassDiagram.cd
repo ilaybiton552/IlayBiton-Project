@@ -8,56 +8,63 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Calendar">
-    <Position X="3.5" Y="3.5" Width="1.5" />
+    <Position X="3.25" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>IBAAACAQAAAAAAAAAAAAAAAAAgAQAAIAEAAAAAAAAAA=</HashCode>
+      <HashCode>IBBAACAQQAAAAAAAAAAAAAAAAgAQABIAEAAQAAAAAAA=</HashCode>
       <FileName>Calendar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.CalendarList">
-    <Position X="3.5" Y="1.75" Width="1.5" />
+    <Position X="3.25" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calendar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Event">
-    <Position X="1.5" Y="3.5" Width="1.5" />
+    <Position X="1" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>YAAAACAAAAAAACAAAAQgACEEIIAxAACAEAAAAEAAIAA=</HashCode>
+      <HashCode>YAAAACAAAAAAACAAAAQgAAAEIIQQABCEEAAQAEAAIAA=</HashCode>
       <FileName>Event.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.EventList">
-    <Position X="1.5" Y="1.75" Width="1.5" />
+    <Position X="1" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Event.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.EventType">
-    <Position X="9" Y="3.5" Width="1.5" />
+    <Position X="9.25" Y="3.5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="Model.EventType.ArithmeticAct" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>EventType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAQAAAAIAAAACAAAAAAAAAAAABAAAAAQAAAAAAAEA=</HashCode>
       <FileName>EventType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.EventTypeList">
-    <Position X="9" Y="1.75" Width="1.5" />
+    <Position X="9.25" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EventType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.User">
-    <Position X="7" Y="3.5" Width="1.5" />
+    <Position X="7" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAACBAAAAgAQAAQAkACkQIAAoGAAAACgAAAAg=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.UserList">
-    <Position X="7" Y="1.75" Width="1.5" />
+    <Position X="7" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
