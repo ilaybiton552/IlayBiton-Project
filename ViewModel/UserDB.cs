@@ -104,7 +104,7 @@ namespace ViewModel
 
         public bool IsUsernameTaken(User user)
         {
-            command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}'";
+            command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}' AND id <> {user.ID}";
             UserList list = new UserList(ExecuteCommand());
             if (list.Count == 0) return false;
             return true;
@@ -112,7 +112,7 @@ namespace ViewModel
 
         public bool IsEmailTaken(User user)
         {
-            command.CommandText = $"SELECT * FROM tableUsers WHERE email = '{user.Email}'";
+            command.CommandText = $"SELECT * FROM tableUsers WHERE email = '{user.Email}' AND id <> {user.ID}";
             UserList list = new UserList(ExecuteCommand());
             if (list.Count == 0) return false;
             return true;
