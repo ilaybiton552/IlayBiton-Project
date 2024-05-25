@@ -40,7 +40,10 @@ namespace ServiceModel
             {
                 foreach (Calendar calendar in user.Calendars)
                 {
-                    DeleteCalendar(calendar);
+                    if (calendar.Creator.ID == user.ID) // only if he is the creator
+                    {
+                        DeleteCalendar(calendar);
+                    }
                 }
             }
             UserDB userDB = new UserDB();
