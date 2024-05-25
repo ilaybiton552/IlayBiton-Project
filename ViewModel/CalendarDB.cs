@@ -51,7 +51,7 @@ namespace ViewModel
 
         public Calendar SelectByName(string name)
         {
-            command.CommandText = $"SELECT * FROM tableCalendars WHERE calednarName = '{name}'";
+            command.CommandText = $"SELECT * FROM tableCalendars WHERE calendarName = '{name}'";
             CalendarList list = new CalendarList(ExecuteCommand());
             if (list.Count == 0) return null;
             return list[0];
