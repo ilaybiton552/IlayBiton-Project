@@ -95,7 +95,10 @@ namespace ViewModel
         {
             command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}' AND [password] = '{user.Password}'";
             UserList list = new UserList(base.ExecuteCommand());
-            if (list.Count == 1) return list[0];
+            // access not case sensitive - need to check manually too
+            if (list.Count == 1 && list[0].Username == user.Username && 
+                list[0].Password == user.Password)
+                return list[0];
             return null;
         }
 
