@@ -31,7 +31,7 @@ namespace ServiceModel
         // EventDB
         [OperationContract] EventList GetAllEvents();
         [OperationContract] int InsertEvent(Event _event);
-        [OperationContract] int UpdateEvent(Event _event);
+        [OperationContract] int UpdateEvent(ref Event _event);
         [OperationContract] int DeleteEvent(Event _event);
         [OperationContract] EventList GetUserEvents(User user);
         [OperationContract] EventList GetCalendarEvents(Calendar calendar);

@@ -116,9 +116,10 @@ namespace ViewModel
             return ExecuteCRUD();
         }
 
-        public int Update(Event _event)
+        public int Update(ref Event _event)
         {
             command.CommandText = $"UPDATE tableEvents SET eventName = @eventName, creator = @creator, eventType = @eventType, isDone = @isDone, startDate = '{_event.StartDate}', dueDate = '{_event.DueDate}', data = @data, calendar = @calendar WHERE id = @id";
+            _event.EventBackground = GetEventBackground(_event);
             LoadParameters(_event);
             return ExecuteCRUD();
         }

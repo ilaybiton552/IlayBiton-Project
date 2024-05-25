@@ -179,10 +179,10 @@ namespace ServiceModel
             return calendarDB.Update(calendar);
         }
 
-        public int UpdateEvent(Event _event)
+        public int UpdateEvent(ref Event _event)
         {
             EventDB eventDB = new EventDB();
-            return eventDB.Update(_event);
+            return eventDB.Update(ref _event);
         }
 
         public int UpdateEventType(EventType eventType)
