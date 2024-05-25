@@ -36,8 +36,13 @@ namespace ServiceModel
         {
             EventDB eventDB = new EventDB();
             eventDB.DeleteByUser(user);
-            CalendarDB calendarDB = new CalendarDB();
-            calendarDB.DeleteByUser(user);
+            if (user.Calendars != null)
+            {
+                foreach (Calendar calendar in user.Calendars)
+                {
+                    DeleteCalendar(calendar);
+                }
+            }
             UserDB userDB = new UserDB();
             return userDB.Delete(user);
         }
