@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
-using static Model.User;
-
 namespace Model
 {
     [DataContract(IsReference = true)]
@@ -21,7 +15,6 @@ namespace Model
             get { return eventName; }
             set { eventName = value; }
         }
-
         protected User creator;
         [DataMember]
         public User Creator
@@ -29,7 +22,6 @@ namespace Model
             get { return creator; }
             set { creator = value; }
         }
-
         protected EventType eventType;
         [DataMember]
         public EventType EventType
@@ -37,7 +29,6 @@ namespace Model
             get { return eventType; }
             set { eventType = value; }
         }
-
         protected bool isDone;
         [DataMember]
         public bool IsDone
@@ -45,7 +36,6 @@ namespace Model
             get { return isDone; }
             set { isDone = value; }
         }
-
         protected DateTime startDate;
         [DataMember]
         public DateTime StartDate
@@ -53,7 +43,6 @@ namespace Model
             get { return startDate; }
             set { startDate = value; }
         }
-
         protected DateTime dueDate;
         [DataMember]
         public DateTime DueDate
@@ -61,7 +50,6 @@ namespace Model
             get { return dueDate; }
             set { dueDate = value; }
         }
-
         protected string data;
         [DataMember]
         public string Data
@@ -69,7 +57,6 @@ namespace Model
             get { return data; }
             set {  data = value; }
         }
-
         protected Calendar calendar;
         [DataMember]
         public Calendar Calendar
@@ -77,7 +64,6 @@ namespace Model
             get { return calendar; }
             set { calendar = value; }
         }
-
         protected Color eventBackground;
         [DataMember]
         public Color EventBackground
@@ -86,7 +72,6 @@ namespace Model
             set { eventBackground = value; }
         }
     }
-
     [CollectionDataContract]
     public class EventList : List<Event>
     {
@@ -94,5 +79,4 @@ namespace Model
         public EventList(IEnumerable<Event> list) : base(list) { }
         public EventList(IEnumerable<BaseEntity> list) : base(list.Cast<Event>().ToList()) { }
     }
-
 }

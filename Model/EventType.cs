@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
-
 namespace Model
 {
     [DataContract(IsReference = true)]
@@ -19,7 +15,6 @@ namespace Model
             get { return type; } 
             set { type = value; } 
         }
-
         protected Color colorShade;
         [DataMember]
         public Color ColorShade
@@ -27,7 +22,6 @@ namespace Model
             get { return colorShade; }
             set { colorShade = value; }
         }
-
         protected ArithmeticAct act;
         [DataMember]
         public ArithmeticAct Act
@@ -36,7 +30,6 @@ namespace Model
             set { act = value; }
         }
     }
-
     [CollectionDataContract]
     public class EventTypeList : List<EventType>
     {
@@ -44,5 +37,4 @@ namespace Model
         public EventTypeList(IEnumerable<EventType> list) : base(list) { }
         public EventTypeList(IEnumerable<BaseEntity> list) : base(list.Cast<EventType>().ToList()) { }
     }
-
 }

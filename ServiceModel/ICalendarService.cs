@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 using Model;
-
 namespace ServiceModel
 {
     [ServiceContract]
@@ -21,13 +15,11 @@ namespace ServiceModel
         [OperationContract] bool IsEmailTaken(User user);
         [OperationContract] User GetUser(User user);
         [OperationContract] UserList GetCalendarUsers(Calendar calendar);
-
         // EventTypeDB
         [OperationContract] EventTypeList GetAllEventTypes();
         [OperationContract] int InsertEventType(EventType eventType);
         [OperationContract] int UpdateEventType(EventType eventType);
         [OperationContract] int DeleteEventType(EventType eventType);
-
         // EventDB
         [OperationContract] EventList GetAllEvents();
         [OperationContract] int InsertEvent(Event _event);
@@ -35,7 +27,6 @@ namespace ServiceModel
         [OperationContract] int DeleteEvent(Event _event);
         [OperationContract] EventList GetUserEvents(User user);
         [OperationContract] EventList GetCalendarEvents(Calendar calendar);
-
         // CalendarDB
         [OperationContract] CalendarList GetAllCalendars();
         [OperationContract] int InsertCalendar(Calendar calendar);

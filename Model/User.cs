@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Model
 {
     [DataContract(IsReference = true)]
@@ -17,7 +14,6 @@ namespace Model
             get { return firstName; }
             set { firstName = value; }
         }
-
         protected string lastName;
         [DataMember]
         public string LastName
@@ -25,7 +21,6 @@ namespace Model
             get { return lastName; }
             set { lastName = value; }
         }
-
         protected string email;
         [DataMember]
         public string Email
@@ -33,7 +28,6 @@ namespace Model
             get { return email; }
             set { email = value; }
         }
-
         protected string username;
         [DataMember]
         public string Username
@@ -41,7 +35,6 @@ namespace Model
             get { return username; }
             set { username = value; }
         }
-
         protected string password;
         [DataMember]
         public string Password
@@ -49,7 +42,6 @@ namespace Model
             get { return password; }
             set { password = value; }
         }
-
         protected string phoneNumber;
         [DataMember]
         public string PhoneNumber
@@ -57,7 +49,6 @@ namespace Model
             get { return phoneNumber; }
             set { phoneNumber = value; }
         }
-
         protected bool isAdmin;
         [DataMember]
         public bool IsAdmin
@@ -65,7 +56,6 @@ namespace Model
             get { return isAdmin; }
             set { isAdmin = value; }
         }
-
         protected DateTime birthday;
         [DataMember]
         public DateTime Birthday
@@ -73,7 +63,6 @@ namespace Model
             get { return birthday; }
             set { birthday = value; }
         }
-
         protected CalendarList calendars;
         [DataMember]
         public CalendarList Calendars
@@ -81,7 +70,6 @@ namespace Model
             get { return calendars; }
             set { calendars = value; }
         }
-
         protected EventList events;
         [DataMember]
         public EventList Events
@@ -90,7 +78,6 @@ namespace Model
             set { events = value; }
         }
     }
-
     [CollectionDataContract]
     public class UserList : List<User>
     {
@@ -98,5 +85,4 @@ namespace Model
         public UserList(IEnumerable<User> list) : base(list) { }
         public UserList(IEnumerable<BaseEntity> list) : base(list.Cast<User>().ToList()) { }
     }
-
 }

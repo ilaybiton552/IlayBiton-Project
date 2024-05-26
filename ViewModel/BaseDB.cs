@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Model;
-
 namespace ViewModel
 {
     public abstract class BaseDB
@@ -15,11 +11,9 @@ namespace ViewModel
         protected OleDbConnection connection;
         protected OleDbCommand command;
         protected OleDbDataReader reader;
-
         protected abstract BaseEntity NewEntity();
         protected abstract BaseEntity CreateModel(BaseEntity entity);
         protected abstract void LoadParameters(BaseEntity entity);
-
         public BaseDB()
         {
             if (connectionString == null)
@@ -31,7 +25,6 @@ namespace ViewModel
             command = new OleDbCommand();
             command.Connection = connection;
         }
-
         public List<BaseEntity> ExecuteCommand() //עבודה וניהול התקשורת מול המסד
         {
             List<BaseEntity> list = new List<BaseEntity>();
@@ -58,7 +51,6 @@ namespace ViewModel
             }
             return list;
         }
-
         public int ExecuteCRUD() //עבודה וניהול התקשורת מול המסד
         {
             int records = 0;
@@ -78,19 +70,15 @@ namespace ViewModel
             }
             return records;
         }
-
         private static string Path()
         {
             string s = Environment.CurrentDirectory; //המיקום שבו רץ הפרויקט
             string[] sub = s.Split('\\'); //פירוק מחרוזת הכתובת למערך לפי תיקיות
-
             int index = sub.Length - 3; //חזרה אחורה 3 תיקיות
             sub[index] = "ViewModel";     //שינוי התיקיה לתיקיה המתאימה
             Array.Resize(ref sub, index + 1); //תיקון של אורך המערך, לאורך המתאים לתיקייה
-
             s = String.Join("\\", sub);  //חיבור מחדש של המערך עם / מפריד אישי 
             return s;
         }
-
     }
 }

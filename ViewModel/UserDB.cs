@@ -1,13 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.OleDb;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ViewModel
 {
     public class UserDB : BaseDB
@@ -16,7 +8,6 @@ namespace ViewModel
         {
             return new User();
         }
-
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             User user = entity as User;
@@ -31,16 +22,13 @@ namespace ViewModel
             user.Birthday = DateTime.Parse(reader["birthday"].ToString());
             user.Calendars = new CalendarList();
             user.Events = new EventList();
-
             return user;
         }
-
         public UserList SelectAll()
         {
             command.CommandText = "SELECT * FROM tableUsers";
             return new UserList(ExecuteCommand());
         }
-
         public User SelectById(int id) 
         {
             command.CommandText = "SELECT * FROM tableUsers WHERE id=" + id.ToString();
@@ -48,13 +36,11 @@ namespace ViewModel
             if (list.Count == 0) return null;
             return list[0];
         }
-
         public UserList SelectByCalendarId(int id)
         {
             command.CommandText = $"SELECT * FROM (tableUsers INNER JOIN tableUserCalendars ON tableUsers.id = tableUserCalendars.userId) WHERE calendarId = {id}";
             return new UserList(ExecuteCommand());
         }
-
         protected override void LoadParameters(BaseEntity entity)
         {
             User user = entity as User;
@@ -68,21 +54,18 @@ namespace ViewModel
             command.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber);
             command.Parameters.AddWithValue("@id", user.ID);
         }
-
         public int Insert(User user)
         {
             command.CommandText = $"INSERT INTO tableUsers (firstName, lastName, username, [password], email, isAdmin, birthday, phoneNumber) VALUES (@firstName, @lastName, @username, @password, @email, @isAdmin, '{user.Birthday.ToString("d")}', @phoneNumber)";
             LoadParameters(user);
             return ExecuteCRUD();
         }
-
         public int Update(User user)
         {
             command.CommandText = $"UPDATE tableUsers SET firstName = @firstName, lastName = @lastName, username = @username, [password] = @password, email = @email, birthday = '{user.Birthday.ToString("d")}', isAdmin = @isAdmin, phoneNumber = @phoneNumber WHERE id = @id";
             LoadParameters(user);
             return ExecuteCRUD();
         }
-
         public int Delete(User user)
         {
             command.CommandText = $"DELETE FROM tableUserCalendars WHERE userId = {user.ID}";
@@ -90,7 +73,6 @@ namespace ViewModel
             command.CommandText = $"DELETE FROM tableUsers WHERE id = {user.ID}";
             return ExecuteCRUD();
         }
-
         public User Login(User user)
         {
             command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}' AND [password] = '{user.Password}'";
@@ -101,7 +83,6 @@ namespace ViewModel
                 return list[0];
             return null;
         }
-
         public bool IsUsernameTaken(User user)
         {
             command.CommandText = $"SELECT * FROM tableUsers WHERE username = '{user.Username}' AND id <> {user.ID}";
@@ -109,7 +90,6 @@ namespace ViewModel
             if (list.Count == 0) return false;
             return true;
         }
-
         public bool IsEmailTaken(User user)
         {
             command.CommandText = $"SELECT * FROM tableUsers WHERE email = '{user.Email}' AND id <> {user.ID}";
@@ -117,6 +97,5 @@ namespace ViewModel
             if (list.Count == 0) return false;
             return true;
         }
-
     }
 }
